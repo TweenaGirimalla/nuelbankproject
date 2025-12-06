@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<style>
+    .profile-box {
+        max-width: 600px;
+        margin: 40px auto;
+        background: #ffffff;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0px 4px 10px rgba(0,0,0,0.15);
+    }
+
+    .profile-box h2 {
+        text-align: center;
+        color: #1e3c72;
+        margin-bottom: 20px;
+    }
+
+    .profile-field {
+        font-size: 18px;
+        padding: 8px 0;
+    }
+
+    .label {
+        font-weight: bold;
+        color: #333;
+    }
+
+    .btn {
+        width: 100%;
+        padding: 10px;
+        margin-top: 15px;
+        border: none;
+        border-radius: 6px;
+        font-size: 16px;
+    }
+
+    .btn-service {
+        background: #1e3c72;
+        color: white;
+    }
+
+    .btn-logout {
+        background: #d63031;
+        color: white;
+    }
+</style>
+
+<div class="profile-box">
+
+    <h2>👤 User Profile</h2>
+
+    <div class="profile-field"><span class="label">First Name:</span> {{ user.first_name }}</div>
+    <div class="profile-field"><span class="label">Last Name:</span> {{ user.last_name }}</div>
+    <div class="profile-field"><span class="label">Email:</span> {{ user.email }}</div>
+    <div class="profile-field"><span class="label">Mobile:</span> {{ user.mobile }}</div>
+    <div class="profile-field"><span class="label">Address:</span> {{ user.address }}</div>
+    <div class="profile-field"><span class="label">Status:</span> Active Customer</div>
+
+    <button class="btn btn-service" onclick="location.href='/services'">Services</button>
+    <button class="btn btn-logout" onclick="location.href='/logout'">Logout</button>
+
+</div>
+
+{% endblock %}
