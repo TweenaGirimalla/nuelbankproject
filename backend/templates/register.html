@@ -43,3 +43,19 @@
     <h2>Create NUEL Bank Account</h2>
 
     <form method="POST" action="/register">
+
+        <input type="text" name="first_name" placeholder="First Name" required>
+        <input type="text" name="last_name" placeholder="Last Name" required>
+        <input type="email" name="email" placeholder="Email Address" required>
+        <input type="text" name="mobile" placeholder="Mobile Number" required>
+
+        <textarea name="address" placeholder="Address" rows="3" required></textarea>
+
+        <input type="password" name="password" placeholder="Create Password" required>
+
+        <button type="submit">Register</button>
+
+    </form>
+</div>
+
+{% endblock %}
