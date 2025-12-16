@@ -1,60 +1,69 @@
 {% extends "base.html" %}
-
 {% block content %}
 
 <style>
-    .register-box {
-        max-width: 500px;
-        margin: 40px auto;
-        background: #f9f9f9;
-        padding: 25px;
-        border-radius: 10px;
-        box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
-    }
+.hero-banner {
+    background: #083a5c;
+    padding: 60px 20px;
+    text-align: center;
+    color: white;
+}
 
-    .register-box h2 {
-        text-align: center;
-        color: #1e3c72;
-        margin-bottom: 20px;
-    }
+.hero-banner h1 {
+    margin: 0;
+    font-size: 38px;
+}
 
-    .register-box input,
-    .register-box textarea {
-        width: 100%;
-        padding: 10px;
-        margin: 8px 0;
-        border-radius: 6px;
-        border: 1px solid #ccc;
-    }
+.register-wrapper {
+    max-width: 460px;
+    margin: -40px auto 60px;
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+}
 
-    .register-box button {
-        width: 100%;
-        padding: 12px;
-        background: #1e3c72;
-        color: white;
-        border: none;
-        border-radius: 6px;
-        font-size: 16px;
+.register-wrapper input,
+.register-wrapper textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.register-wrapper button {
+    width: 100%;
+    padding: 14px;
+    background: #ef6c1a;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+@media (max-width: 600px) {
+    .hero-banner h1 {
+        font-size: 28px;
     }
+}
 </style>
 
-<div class="register-box">
+<section class="hero-banner">
+    <h1>REGISTER</h1>
+</section>
 
-    <h2>Create NUEL Bank Account</h2>
-
-    <form method="POST" action="/register">
-
+<div class="register-wrapper">
+    <form method="POST">
         <input type="text" name="first_name" placeholder="First Name" required>
         <input type="text" name="last_name" placeholder="Last Name" required>
         <input type="email" name="email" placeholder="Email Address" required>
         <input type="text" name="mobile" placeholder="Mobile Number" required>
-
-        <textarea name="address" placeholder="Address" rows="3" required></textarea>
-
+        <textarea name="address" placeholder="Address" rows="3"></textarea>
         <input type="password" name="password" placeholder="Create Password" required>
 
-        <button type="submit">Register</button>
-
+        <button type="submit">REGISTER</button>
     </form>
 </div>
 

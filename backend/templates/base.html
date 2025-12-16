@@ -1,80 +1,94 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>NUEL Bank</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
     <style>
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f2f6ff;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: #f3f6fb;
         }
 
+        /* HEADER */
         header {
             background: #ffffff;
-            padding: 10px 30px;
+            border-bottom: 2px solid #0b2e4a;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 14px 24px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            border-bottom: 2px solid #1e3c72;
         }
 
         .logo img {
-            height: 70px;
+            height: 60px;
         }
 
         nav a {
+            margin-left: 20px;
             text-decoration: none;
-            margin: 0 15px;
-            color: #1e3c72;
-            font-weight: bold;
-            font-size: 16px;
+            font-weight: 600;
+            color: #0b2e4a;
         }
 
         nav a:hover {
-            color: #ff6600;
+            color: #ef6c1a;
         }
 
-        .content {
-            padding: 30px;
+        /* MAIN CONTENT */
+        main {
+            width: 100%;
         }
 
+        /* FOOTER */
         footer {
             background: #1e3c72;
-            color: white;
-            padding: 10px;
+            color: #fff;
             text-align: center;
-            margin-top: 70px;
+            padding: 12px;
+            margin-top: 40px;
         }
     </style>
 </head>
+
 <body>
 
 <header>
-    <div class="logo">
-        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="NUEL BANK">
+    <div class="nav-container">
+        <div class="logo">
+            <img src="{{ url_for('static', filename='images/logo.png') }}">
+        </div>
+
+        <nav>
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('about') }}">About</a>
+            <a href="{{ url_for('services') }}">Services</a>
+
+            {% if 'email' in session %}
+                <a href="{{ url_for('profile') }}">Profile</a>
+                <a href="{{ url_for('logout') }}">Logout</a>
+            {% else %}
+                <a href="{{ url_for('login') }}">Login</a>
+                <a href="{{ url_for('register') }}">Register</a>
+            {% endif %}
+        </nav>
     </div>
-
-    <nav>
-        <a href="{{ url_for('home') }}">Home</a>
-        <a href="{{ url_for('about') }}">About</a>
-        <a href="{{ url_for('services') }}">Services</a>
-
-        {% if 'user_email' in session %}
-            <a href="{{ url_for('profile') }}">Profile</a>
-            <a href="{{ url_for('logout') }}">Logout</a>
-        {% else %}
-            <a href="{{ url_for('login') }}">Login</a>
-            <a href="{{ url_for('register') }}">Register</a>
-        {% endif %}
-    </nav>
 </header>
 
-<div class="content">
+<main>
     {% block content %}{% endblock %}
-</div>
+</main>
 
 <footer>
-    <p>© 2025 NUEL BANK. All Rights Reserved.</p>
+    © 2025 NUEL BANK. All Rights Reserved.
 </footer>
 
 </body>

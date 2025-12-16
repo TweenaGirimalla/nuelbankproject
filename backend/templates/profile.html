@@ -1,67 +1,87 @@
 {% extends "base.html" %}
-
 {% block content %}
 
 <style>
-    .profile-box {
-        max-width: 600px;
-        margin: 40px auto;
-        background: #ffffff;
-        padding: 30px;
-        border-radius: 12px;
-        box-shadow: 0px 4px 10px rgba(0,0,0,0.15);
-    }
+.hero-banner {
+    background: #083a5c;
+    padding: 60px 20px;
+    text-align: center;
+    color: white;
+}
 
-    .profile-box h2 {
-        text-align: center;
-        color: #1e3c72;
-        margin-bottom: 20px;
-    }
+.hero-banner h1 {
+    margin: 0;
+    font-size: 38px;
+}
 
-    .profile-field {
-        font-size: 18px;
-        padding: 8px 0;
-    }
+.profile-wrapper {
+    max-width: 700px;
+    margin: -40px auto 60px;
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+    text-align: center;
+}
 
-    .label {
-        font-weight: bold;
-        color: #333;
-    }
+.profile-avatar {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    background: #ddd url('{{ url_for("static", filename="images/user.png") }}') center/cover no-repeat;
+    margin: -90px auto 15px;
+}
 
-    .btn {
-        width: 100%;
-        padding: 10px;
-        margin-top: 15px;
-        border: none;
-        border-radius: 6px;
-        font-size: 16px;
-    }
+.profile-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    text-align: left;
+    margin-top: 20px;
+}
 
-    .btn-service {
-        background: #1e3c72;
-        color: white;
-    }
+.profile-grid div {
+    font-size: 15px;
+}
 
-    .btn-logout {
-        background: #d63031;
-        color: white;
+.profile-btn {
+    margin-top: 25px;
+    padding: 14px;
+    width: 100%;
+    background: #ef6c1a;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+@media (max-width: 700px) {
+    .profile-grid {
+        grid-template-columns: 1fr;
     }
+    .hero-banner h1 {
+        font-size: 28px;
+    }
+}
 </style>
 
-<div class="profile-box">
+<section class="hero-banner">
+    <h1>PROFILE</h1>
+</section>
 
-    <h2>👤 User Profile</h2>
+<div class="profile-wrapper">
+    <div class="profile-avatar"></div>
 
-    <div class="profile-field"><span class="label">First Name:</span> {{ user.first_name }}</div>
-    <div class="profile-field"><span class="label">Last Name:</span> {{ user.last_name }}</div>
-    <div class="profile-field"><span class="label">Email:</span> {{ user.email }}</div>
-    <div class="profile-field"><span class="label">Mobile:</span> {{ user.mobile }}</div>
-    <div class="profile-field"><span class="label">Address:</span> {{ user.address }}</div>
-    <div class="profile-field"><span class="label">Status:</span> Active Customer</div>
+    <h2>{{ user.first_name }} {{ user.last_name }}</h2>
+    <p>{{ user.email }}</p>
 
-    <button class="btn btn-service" onclick="location.href='/services'">Services</button>
-    <button class="btn btn-logout" onclick="location.href='/logout'">Logout</button>
+    <div class="profile-grid">
+        <div><strong>Phone:</strong><br>{{ user.mobile }}</div>
+        <div><strong>Address:</strong><br>{{ user.address }}</div>
+    </div>
 
+    <button class="profile-btn">EDIT PROFILE</button>
 </div>
 
 {% endblock %}

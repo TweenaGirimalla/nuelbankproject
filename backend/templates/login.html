@@ -1,94 +1,92 @@
 {% extends "base.html" %}
-
 {% block content %}
 
 <style>
-    .login-box {
-        max-width: 400px;
-        margin: 50px auto;
-        background: #f9f9f9;
-        padding: 25px;
-        border-radius: 10px;
-        box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
-    }
+.hero-banner {
+    background: #083a5c;
+    padding: 60px 20px;
+    text-align: center;
+    color: white;
+}
 
-    .login-box h2 {
-        text-align: center;
-        color: #1e3c72;
-        margin-bottom: 20px;
-    }
+.hero-banner h1 {
+    margin: 0;
+    font-size: 38px;
+    letter-spacing: 1px;
+}
 
-    .login-box input {
-        width: 100%;
-        padding: 12px;
-        margin: 8px 0;
-        border-radius: 6px;
-        border: 1px solid #ccc;
-    }
+.login-wrapper {
+    max-width: 420px;
+    margin: -40px auto 60px;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+    text-align: center;
+}
 
-    .login-box button {
-        width: 100%;
-        padding: 12px;
-        background: #1e3c72;
-        color: white;
-        border: none;
-        border-radius: 6px;
-        font-size: 16px;
-        cursor: pointer;
-    }
+.avatar {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    margin: -80px auto 15px;
+    background: #ddd url('{{ url_for("static", filename="images/user.png") }}') center/cover no-repeat;
+}
 
-    .login-box button:hover {
-        background: #162f5f;
-    }
+.login-wrapper input {
+    width: 100%;
+    padding: 12px 14px;
+    margin: 10px 0;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+}
 
-    .error {
-        background: #ffd6d6;
-        color: red;
-        padding: 10px;
-        border-radius: 5px;
-        margin-bottom: 10px;
-        text-align: center;
-    }
+.login-wrapper button {
+    width: 100%;
+    padding: 14px;
+    background: #ef6c1a;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
 
-    .links {
-        text-align: center;
-        margin-top: 15px;
-    }
+.login-wrapper button:hover {
+    background: #d85d13;
+}
 
-    .links a {
-        text-decoration: none;
-        color: #1e3c72;
-        font-weight: bold;
+.login-links {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+@media (max-width: 600px) {
+    .hero-banner h1 {
+        font-size: 28px;
     }
+}
 </style>
 
+<section class="hero-banner">
+    <h1>LOGIN</h1>
+</section>
 
-<div class="login-box">
+<div class="login-wrapper">
+    <div class="avatar"></div>
 
-    <h2>🔐 NUEL Bank Login</h2>
+    <form method="POST">
+        <input type="email" name="email" placeholder="Email Address" required>
+        <input type="password" name="password" placeholder="Password" required>
 
-    <!-- Flash messages here -->
-    {% with messages = get_flashed_messages() %}
-      {% if messages %}
-        {% for message in messages %}
-          <div class="error">{{ message }}</div>
-        {% endfor %}
-      {% endif %}
-    {% endwith %}
-
-    <form method="POST" action="/login">
-        <input type="email" name="email" placeholder="Enter Email" required>
-        <input type="password" name="password" placeholder="Enter Password" required>
-
-        <button type="submit">Login</button>
+        <button type="submit">LOGIN</button>
     </form>
 
-    <div class="links">
-        <p>Don't have an account?</p>
-        <a href="/register">Register</a> |
-        <a href="/">Home</a>
+    <div class="login-links">
+        Don’t have an account? <a href="/register">Sign up</a>
     </div>
-
 </div>
 
 {% endblock %}
