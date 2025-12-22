@@ -2,89 +2,119 @@
 {% block content %}
 
 <style>
-.hero {
-    background: url("{{ url_for('static', filename='images/hero-banner.jpg') }}") center/cover no-repeat;
-    padding: 90px 20px;
+/* HOME HERO */
+.home-hero {
+    background: linear-gradient(
+        rgba(11,46,74,0.85),
+        rgba(11,46,74,0.85)
+    ),
+    url("{{ url_for('static', filename='images/hero-banner.jpg') }}")
+    center / cover no-repeat;
+    padding: 100px 20px;
     text-align: center;
     color: white;
 }
 
-.hero::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-}
-
-.hero h1 {
-    font-size: 42px;
+.home-hero h1 {
+    font-size: 44px;
     font-weight: 800;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
 }
 
-.hero p {
+.home-hero p {
     font-size: 16px;
-    margin-bottom: 25px;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
 }
 
-.hero a {
+.home-hero a {
     background: #ef6c1a;
-    color: white;
-    padding: 14px 32px;
+    color: #fff;
+    padding: 14px 36px;
     border-radius: 6px;
     text-decoration: none;
     font-weight: 700;
 }
 
+/* SERVICES */
 .section {
     max-width: 1200px;
-    margin: 50px auto;
+    margin: 60px auto;
     padding: 0 20px;
 }
 
-.services {
-    display: flex;
-    gap: 20px;
-    justify-content: space-between;
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 40px;
 }
 
-.card {
+.service-card {
     background: white;
-    padding: 24px;
-    border-radius: 10px;
+    padding: 28px;
+    border-radius: 12px;
     text-align: center;
-    flex: 1;
-    box-shadow: 0 4px 14px rgba(0,0,0,.08);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+
+.service-card h4 {
+    margin-bottom: 10px;
+    color: #0b2e4a;
+}
+
+/* DRIVING VISION */
+.vision {
+    background: linear-gradient(90deg, #0b2e4a, #144a7a);
+    color: white;
+    padding: 50px 20px;
+}
+
+/* MOBILE */
+@media (max-width: 900px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+    .home-hero h1 {
+        font-size: 30px;
+    }
 }
 </style>
 
-<section class="hero">
+<section class="home-hero">
     <h1>INNOVATIVE BANKING<br>FOR A DIGITAL FUTURE</h1>
-    <p>Secure • Smart • Seamless Financial Solutions</p>
-    <a href="/register">OPEN ACCOUNT</a>
+    <p>SECURE • SMART • SEAMLESS FINANCIAL SOLUTIONS</p>
+    <a href="{{ url_for('register') }}">OPEN ACCOUNT</a>
 </section>
 
 <section class="section">
     <h2 style="text-align:center">OUR SERVICES</h2>
-    <div class="services">
-        <div class="card">
+
+    <div class="services-grid">
+        <div class="service-card">
             <h4>Digital Banking</h4>
-            <p>24/7 secure savings & current accounts</p>
+            <p>Seamless online savings & current accounts</p>
         </div>
-        <div class="card">
+
+        <div class="service-card">
             <h4>Payments & Cards</h4>
             <p>UPI, instant transfers, debit cards</p>
         </div>
-        <div class="card">
+
+        <div class="service-card">
             <h4>Loans & Credit</h4>
-            <p>Fast approvals with transparency</p>
+            <p>Quick approvals with transparent process</p>
         </div>
     </div>
 </section>
 
-<section style="background:#0b3a66;color:white;padding:40px">
+<section class="vision">
     <div class="section">
         <h2>DRIVING VISION</h2>
-        <p>We aim to deliver secure, modern banking solutions for a better future.</p>
+        <p>
+            We aim to deliver secure, modern banking solutions that empower
+            individuals and businesses for a better financial future.
+        </p>
     </div>
 </section>
 
